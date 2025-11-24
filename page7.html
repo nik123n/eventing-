@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever Yours 💗</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+
+<style>
+body {
+    background-image: url('heart1.jpg'); /* Romantic background */
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    animation: fadeInBody 1.5s forwards ease-in-out;
+    opacity: 0;
+}
+
+/* Fade in body */
+@keyframes fadeInBody { to { opacity: 1; } }
+
+/* Glow title */
+.glow {
+    text-align: center;
+    font-size: 3rem;
+    color: #3300fd;
+    text-shadow: 0 0 15px #ff9bd1, 0 0 25px #ff5ca7;
+    margin-top: 40px;
+    animation: glowText 2s infinite alternate;
+}
+
+@keyframes glowText {
+    from { text-shadow: 0 0 10px #ff9bd1, 0 0 20px #ff5ca7; }
+    to { text-shadow: 0 0 25px #ff9bd1, 0 0 40px #dc0d0d; }
+}
+
+/* Heart Tunnel */
+.heart-tunnel {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart-tunnel span {
+    position: absolute;
+    top:50%;
+    left:50%;
+    color: rgba(255,100,150,0.5);
+    font-size: 2rem;
+    animation: tunnel 4s infinite linear;
+}
+
+@keyframes tunnel {
+    from { transform: translate(-50%, -50%) scale(0); opacity:1; }
+    to { transform: translate(-50%, -50%) scale(10); opacity:0; }
+}
+
+/* Falling Rose Petals */
+.rose {
+    position: fixed;
+    top: -10vh;
+    font-size: 2rem;
+    animation: fall 6s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to { transform: translateY(120vh) rotate(180deg); opacity:0; }
+}
+
+/* Fireworks */
+.firework {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: #ff6ec7;
+    border-radius: 50%;
+    animation: explode 800ms ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes explode {
+    0% { transform: translate(0,0) scale(1); opacity:1; }
+    100% { transform: translate(var(--x), var(--y)) scale(0.1); opacity:0; }
+}
+
+/* Sparkles */
+.sparkle {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleAnim 2s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes sparkleAnim {
+    0% { transform: translateY(0) scale(1); opacity:0.8; }
+    50% { transform: translateY(-20px) scale(1.3); opacity:0.4; }
+    100% { transform: translateY(0) scale(1); opacity:0.8; }
+}
+
+/* Shayari / text styling */
+.shayari, div {
+    color: #fff;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="sparkles"></div>
+<div class="hearts"></div>
+
+<!-- Heart Tunnel -->
+<div class="heart-tunnel" id="heartTunnel"></div>
+
+<h1 class="glow">Forever Yours 💗</h1>
+
+<div style="font-size: 1.5rem; margin: 20px 0; line-height: 1.6;">
+    Kaaanhaa, you are my everything.<br>
+    Through every high and low, I'm yours.<br>
+    Thank you for letting me love you.<br>
+    Forever and always.
+</div>
+
+<div class="shayari" style="font-size: 1.3rem; margin: 20px 0;">
+    Zindagi ki har mod pe tum mere saath ho,<br>
+    Tumhari mohabbat se main kabhi akela nahi,<br>
+    Ab aur hamesha, main tumhara hoon,<br>
+    Tumhari zindagi ka har hissa. ❤️<br>
+    I promise to cherish and love you forever.<br>
+    I loveeeeeeeeeee youuuuuuuu sooooooooo muchhhhhhhhh! 💖<br>
+    I Loveeeeee You More Than Anything In This Worldddddd! 💘<br>
+    I loveeee youuu kanhaaaaaaa! 💞<br>
+    I am Always With Youuuuuuuuu! 💝
+</div>
+
+<footer style="margin-top: 50px; font-size: 1.2rem;">With endless love, Nikunj ❤️</footer>
+
+<!-- Music -->
+
+
+<script src="script.js"></script>
+<script>
+// Heart Tunnel
+const tunnel = document.getElementById("heartTunnel");
+setInterval(()=>{
+    const span=document.createElement("span");
+    span.innerHTML="❤";
+    tunnel.appendChild(span);
+    setTimeout(()=>span.remove(),3500);
+},350);
+
+// Falling Roses
+setInterval(()=>{
+    const rose=document.createElement("div");
+    rose.className="rose";
+    rose.innerHTML="🌹";
+    rose.style.left=Math.random()*100+"vw";
+    rose.style.fontSize=(Math.random()*20+20)+"px";
+    document.body.appendChild(rose);
+    setTimeout(()=>rose.remove(),7000);
+},800);
+
+// Fireworks on click
+document.addEventListener("click",(e)=>{
+    for(let i=0;i<12;i++){
+        const fw=document.createElement("div");
+        fw.className="firework";
+        fw.style.left=e.clientX+"px";
+        fw.style.top=e.clientY+"px";
+        fw.style.setProperty("--x",(Math.random()*200-100)+"px");
+        fw.style.setProperty("--y",(Math.random()*200-100)+"px");
+        document.body.appendChild(fw);
+        setTimeout(()=>fw.remove(),900);
+    }
+});
+
+// Sparkles
+setInterval(()=>{
+    const sp=document.createElement("div");
+    sp.className="sparkle";
+    sp.style.left=Math.random()*100+"vw";
+    sp.style.top=Math.random()*100+"vh";
+    document.body.appendChild(sp);
+    setTimeout(()=>sp.remove(),2000);
+},300);
+
+</script>
+</body>
+</html>

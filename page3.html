@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KANAK 💗</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght:300;400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Background -->
+    <style>
+        body {
+            background-image: url('heart2.jpg'); /* You can replace with bg3.gif */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0;
+            animation: fadeInBody 1.5s forwards ease-in-out;
+        }
+
+        @keyframes fadeInBody {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .rose-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* 3D Floating Message Boxes */
+        .message-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 20px;
+            border-radius: 15px;
+            width: 80%;
+            margin: 20px auto;
+            font-size: 1.4rem;
+            box-shadow: 0 0 20px rgba(255, 183, 232, 0.6);
+            transform-style: preserve-3d;
+            animation: float3D 6s ease-in-out infinite;
+        }
+
+        @keyframes float3D {
+            0% {
+                transform: translateY(0px) rotateX(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotateX(5deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotateX(0deg);
+            }
+        }
+
+        /* Love Letter Typing Effect */
+        .typing {
+            width: 90%;
+            margin: 20px auto;
+            font-size: 1.35rem;
+            white-space: pre-line;
+            font-family: "Poppins", sans-serif;
+            border-right: 2px solid #fff;
+            overflow: hidden;
+            animation: typing 6s steps(60) forwards, blink 0.7s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* Heart explosion on click */
+        .love-btn {
+            margin-top: 30px;
+            padding: 18px 45px;
+            font-size: 1.4rem;
+            background: linear-gradient(45deg, #ff1e75, #ff77b7);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px #ff4fa8;
+            transition: 0.3s;
+            animation: heartbeat 1.4s infinite;
+        }
+
+        .love-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 35px #ffcce8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sparkles -->
+    <div class="sparkles"></div>
+
+    <!-- Floating Hearts -->
+    <div class="hearts"></div>
+
+    <!-- Falling Petals -->
+    <div class="rose-container" id="roseContainer"></div>
+
+    <div class="page-wrapper" style="text-align: center; margin-top: 40px;">
+
+        <h1 class="glow" style="font-size: 4rem;">KANAK 💗</h1>
+
+        <!-- 3D floating message box -->
+        <div class="message-box">
+            Thank you for existing.<br>
+            Even on your tired days, you are magic.
+        </div>
+
+        <!-- Love Letter Typing Effect -->
+        <div class="typing">
+            "Kabhi kabhi lagta hai tumhari muskurahat hi meri duniya hai…
+             Aur tumhare bina, yeh zindagi adhoori si lagti hai."
+        </div>
+
+        <!-- Shayari -->
+        <div class="message-box" style="font-size: 1.3rem;">
+            Mohabbat ka matlab sirf saath hona nahi,<br>
+            Balki har takleef me saath nibhana hota hai.<br>
+            Aaj jo tum thodi udaas ho,<br>
+            Main tumhara sahara hoon 💞
+        </div>
+
+        <!-- Button -->
+        <button class="love-btn" id="nextBtn" data-href="page4.html">
+            Continue 💖
+        </button>
+
+        <footer style="margin-top: 40px; font-size: 1.2rem;">From Nikunj ❤️</footer>
+
+        <!-- Music -->
+        <div class="music-player">
+            <audio controls loop autoplay>
+                <source src="assets/background-music.mp3" type="audio/mp3">
+            </audio>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+
+    <!-- SPECIAL JS EFFECTS -->
+    <script>
+        /* Falling Rose Petals */
+        function createPetal() {
+            const petal = document.createElement("div");
+            petal.innerHTML = "🌸";  // Rose emoji alternative: "🌹"
+            petal.style.position = "absolute";
+            petal.style.left = Math.random() * window.innerWidth + "px";
+            petal.style.fontSize = (Math.random() * 20 + 20) + "px";
+            petal.style.top = "-20px";
+            petal.style.opacity = 0.9;
+            petal.style.animation = `fall ${4 + Math.random() * 4}s linear`;
+            document.getElementById("roseContainer").appendChild(petal);
+
+            setTimeout(() => petal.remove(), 8000);
+        }
+
+        setInterval(createPetal, 500);
+
+        const petalStyle = document.createElement("style");
+        petalStyle.innerHTML = `
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        `;
+        document.head.appendChild(petalStyle);
+
+        /* Heart Explosion on button click */
+        const nextBtn = document.getElementById("nextBtn");
+
+        nextBtn.addEventListener("click", () => {
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement("div");
+                heart.innerHTML = "💖";
+                heart.style.position = "absolute";
+                heart.style.left = (nextBtn.offsetLeft + nextBtn.offsetWidth / 2) + "px";
+                heart.style.top = (nextBtn.offsetTop + nextBtn.offsetHeight / 2) + "px";
+                heart.style.fontSize = "1.4rem";
+                heart.style.animation = "explode 1s ease-out forwards";
+                document.body.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 1200);
+            }
+
+            setTimeout(() => {
+                window.location.href = nextBtn.dataset.href;
+            }, 900);
+        });
+
+        const explosionStyle = document.createElement("style");
+        explosionStyle.innerHTML = `
+        @keyframes explode {
+            from { transform: scale(0) translate(0,0); opacity: 1; }
+            to {
+                transform: scale(2) translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px);
+                opacity: 0;
+            }
+        }
+        `;
+        document.head.appendChild(explosionStyle);
+    </script>
+
+</body>
+
+</html>

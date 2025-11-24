@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why I Love You 💖</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+
+<style>
+body {
+    background-image: url('heart5.webp'); /* Romantic background */
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    animation: fadeInBody 1.5s forwards ease-in-out;
+    opacity: 0;
+}
+
+/* Fade in body */
+@keyframes fadeInBody { to { opacity: 1; } }
+
+/* Glow title */
+.glow {
+    text-align: center;
+    font-size: 3rem;
+    color: #ff5ca7;
+    text-shadow: 0 0 15px #ff9bd1, 0 0 25px #ff5ca7;
+    margin-top: 40px;
+    animation: glowText 2s infinite alternate;
+}
+
+@keyframes glowText {
+    from { text-shadow: 0 0 10px #ff9bd1, 0 0 20px #ff5ca7; }
+    to { text-shadow: 0 0 25px #ff9bd1, 0 0 40px #ff5ca7; }
+}
+
+/* Love Button */
+.love-btn {
+    display: block;
+    margin: 40px auto;
+    padding: 18px 50px;
+    font-size: 1.6rem;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg,#ff5ca7,#ff99d6);
+    box-shadow: 0 0 25px #ff91c6;
+    cursor: pointer;
+    animation: heartbeat 1.5s infinite;
+}
+
+.love-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 40px #ffcce8;
+}
+
+@keyframes heartbeat {
+    0%,100% {transform:scale(1);}
+    50% {transform:scale(1.15);}
+}
+
+/* Floating hearts */
+.floating-heart {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    animation: floatHeart linear infinite;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(0) rotate(0deg); opacity:1; }
+    100% { transform: translateY(-120vh) rotate(360deg); opacity:0; }
+}
+
+/* 3D Love Boxes */
+.love-box {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg,#ff5ca7,#ff99d6);
+    border-radius: 15px;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 25px #ff91c6;
+    animation: popBox 3s ease-in-out infinite;
+}
+
+@keyframes popBox {
+    0% { transform: translateY(0) rotateY(0deg) rotateX(0deg) scale(0); opacity:0; }
+    50% { transform: translateY(-50px) rotateY(180deg) rotateX(180deg) scale(1); opacity:1; }
+    100% { transform: translateY(0) rotateY(360deg) rotateX(360deg) scale(0); opacity:0; }
+}
+
+/* Sparkles / fireworks */
+.firework {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: #ff6ec7;
+    border-radius: 50%;
+    animation: explode 800ms ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes explode {
+    0% { transform: translate(0,0) scale(1); opacity:1; }
+    100% { transform: translate(var(--x), var(--y)) scale(0.1); opacity:0; }
+}
+
+/* Story typing effect */
+#story {
+    margin: 20px auto;
+    font-size: 1.3rem;
+    max-width: 650px;
+    color: #e20505b3;
+    text-align: center;
+    line-height: 1.6;
+    font-family: 'Dancing Script', cursive;
+}
+</style>
+</head>
+<body>
+
+<div class="sparkles"></div>
+<div class="hearts"></div>
+
+<!-- Floating Hearts Container -->
+<div id="heartContainer"></div>
+
+<!-- 3D Love Boxes -->
+<div id="boxContainer"></div>
+
+<h1 class="glow">Why I Love You 💕</h1>
+
+<!-- Romantic Story Typing Effect -->
+<div id="story"></div>
+
+<!-- Love Button -->
+<button class="love-btn" data-href="page7.html">Next Surprise 💖</button>
+
+<!-- Music -->
+
+<script src="script.js"></script>
+<script>
+// Floating hearts
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "floating-heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (Math.random()*20+20)+"px";
+    document.getElementById("heartContainer").appendChild(heart);
+    setTimeout(()=>heart.remove(), 7000);
+}, 600);
+
+// 3D Love Boxes
+setInterval(()=>{
+    const box = document.createElement("div");
+    box.className="love-box";
+    box.style.left=Math.random()*80+"vw";
+    box.style.top=Math.random()*70+"vh";
+    document.getElementById("boxContainer").appendChild(box);
+    setTimeout(()=>box.remove(), 3000);
+},1500);
+
+// Fireworks on click
+document.addEventListener("click",(e)=>{
+    for(let i=0;i<12;i++){
+        const fw=document.createElement("div");
+        fw.className="firework";
+        fw.style.left=e.clientX+"px";
+        fw.style.top=e.clientY+"px";
+        fw.style.setProperty("--x",(Math.random()*200-100)+"px");
+        fw.style.setProperty("--y",(Math.random()*200-100)+"px");
+        document.body.appendChild(fw);
+        setTimeout(()=>fw.remove(),900);
+    }
+});
+
+// Romantic Story Typing Effect
+const storyText = `Your kindness that lights up the room.
+Your strength, even on tough days.
+Your smile that makes my world brighter.
+Your heart that loves so deeply.
+Because you are you—perfect in every way.
+Tumhari adaon se main deewana hoon,
+Tumhari nazar se dil ko chain milta hai,
+Mohabbat ki siyahon mein tumhara naam likha hai,
+Har lamha, har pal mein. 💞`;
+
+let i=0;
+const storyDiv=document.getElementById("story");
+function typeWriter(){
+    if(i<storyText.length){
+        storyDiv.innerHTML += storyText.charAt(i) === '\n'? '<br>':storyText.charAt(i);
+        i++;
+        setTimeout(typeWriter,50);
+    }
+}
+typeWriter();
+
+// Button click navigation
+document.querySelector(".love-btn").addEventListener("click",()=>{
+    window.location.href=document.querySelector(".love-btn").dataset.href;
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memories We Share 💖</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+
+<style>
+body {
+    background-image: url('heart1.jpg'); /* Can replace with bg5.gif for motion */
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    animation: fadeInBody 1.5s forwards ease-in-out;
+    opacity: 0;
+}
+
+/* Fade in page */
+@keyframes fadeInBody { to { opacity: 1; } }
+
+/* Glowing Title */
+.glow {
+    text-align: center;
+    font-size: 3rem;
+    color: #130186;
+    text-shadow: 0 0 15px #ff9bd1, 0 0 25px #ff5ca7;
+    margin-top: 40px;
+    animation: glowText 2s infinite alternate;
+}
+
+@keyframes glowText {
+    from { text-shadow: 0 0 10px #ff9bd1, 0 0 20px #ff5ca7; }
+    to { text-shadow: 0 0 25px #ff9bd1, 0 0 40px #ff5ca7; }
+}
+
+/* Love Button */
+.love-btn {
+    display: block;
+    margin: 40px auto;
+    padding: 18px 50px;
+    font-size: 1.6rem;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg,#ff5ca7,#ff99d6);
+    box-shadow: 0 0 25px #ff91c6;
+    cursor: pointer;
+    animation: heartbeat 1.5s infinite;
+}
+
+.love-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 40px #ffcce8;
+}
+
+@keyframes heartbeat {
+    0%,100% {transform:scale(1);}
+    50% {transform:scale(1.15);}
+}
+
+/* Heart Tunnel */
+.heart-tunnel {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart-tunnel span {
+    position: absolute;
+    top:50%;
+    left:50%;
+    color: rgba(255,100,150,0.5);
+    font-size: 2rem;
+    animation: tunnel 4s infinite linear;
+}
+
+@keyframes tunnel {
+    from { transform: translate(-50%, -50%) scale(0); opacity:1; }
+    to { transform: translate(-50%, -50%) scale(10); opacity:0; }
+}
+
+/* Falling Rose Petals */
+.rose {
+    position: fixed;
+    top: -10vh;
+    font-size: 2rem;
+    animation: fall 6s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to { transform: translateY(120vh) rotate(180deg); opacity:0; }
+}
+
+/* Fireworks */
+.firework {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: #ff6ec7;
+    border-radius: 50%;
+    animation: explode 800ms ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes explode {
+    0% { transform: translate(0,0) scale(1); opacity:1; }
+    100% { transform: translate(var(--x), var(--y)) scale(0.1); opacity:0; }
+}
+
+/* Love letter typing effect */
+#loveLetter {
+    margin: 20px auto;
+    font-size: 1.3rem;
+    max-width: 650px;
+    color: #fff;
+    text-align: center;
+    line-height: 1.6;
+    font-family: 'Dancing Script', cursive;
+}
+</style>
+</head>
+<body>
+
+<div class="sparkles"></div>
+<div class="hearts"></div>
+
+<!-- Heart Tunnel -->
+<div class="heart-tunnel" id="heartTunnel"></div>
+
+<!-- Falling Roses -->
+<div id="roseContainer"></div>
+
+<h1 class="glow">Memories We Share 💖</h1>
+
+<!-- Love Letter Typing Effect -->
+<div id="loveLetter"></div>
+
+<!-- Button -->
+<button class="love-btn" data-href="page6.html">Next Surprise 💘</button>
+
+
+<script src="script.js"></script>
+<script>
+// Heart Tunnel
+const tunnel = document.getElementById("heartTunnel");
+setInterval(()=>{
+    const span=document.createElement("span");
+    span.innerHTML="❤";
+    tunnel.appendChild(span);
+    setTimeout(()=>span.remove(),3500);
+},350);
+
+// Falling Roses
+setInterval(()=>{
+    const rose=document.createElement("div");
+    rose.className="rose";
+    rose.innerHTML="🌹";
+    rose.style.left=Math.random()*100+"vw";
+    rose.style.fontSize=(Math.random()*20+20)+"px";
+    document.getElementById("roseContainer").appendChild(rose);
+    setTimeout(()=>rose.remove(),7000);
+},800);
+
+// Fireworks on click
+document.addEventListener("click",(e)=>{
+    for(let i=0;i<12;i++){
+        const fw=document.createElement("div");
+        fw.className="firework";
+        fw.style.left=e.clientX+"px";
+        fw.style.top=e.clientY+"px";
+        fw.style.setProperty("--x",(Math.random()*200-100)+"px");
+        fw.style.setProperty("--y",(Math.random()*200-100)+"px");
+        document.body.appendChild(fw);
+        setTimeout(()=>fw.remove(),900);
+    }
+});
+
+// Love letter typing effect
+const loveText=`Every laugh, every quiet moment—our memories are my treasure.
+You make every day unforgettable.
+Yaadon ki raahon pe hum kho jaate hain,
+Tumhari muskurahat se dil ko sukoon milta hai,
+Har pal tumhare saath ek kahani ban jati hai,
+Jo kabhi khatam nahi hoti. ❤️
+"Love is not about how many days, but how much you mean to me."
+"In your eyes, I found my forever."`;
+
+let i=0;
+const loveLetter = document.getElementById("loveLetter");
+function typeWriter(){
+    if(i<loveText.length){
+        loveLetter.innerHTML += loveText.charAt(i) === '\n' ? '<br>' : loveText.charAt(i);
+        i++;
+        setTimeout(typeWriter,50);
+    }
+}
+typeWriter();
+
+// Button click navigation
+document.querySelector(".love-btn").addEventListener("click",()=>{
+    window.location.href=document.querySelector(".love-btn").dataset.href;
+});
+</script>
+</body>
+</html>

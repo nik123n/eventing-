@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Deserve Love ❤️</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- BACKGROUND (supports JPG / GIF both) -->
+    <style>
+        body {
+            background-image: url("heart2.jpg"); /* <-- Replace with bg2.jpg or bg2.gif */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            animation: fadeInBody 1.5s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInBody {
+            to { opacity: 1; }
+        }
+
+        .page-wrapper {
+            animation: slideUp 1.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sparkles -->
+    <div class="sparkles"></div>
+
+    <!-- Floating Hearts -->
+    <div class="hearts"></div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+        <!-- Centered Big Heart -->
+        <div class="heart-pulse" style="font-size: 4rem; margin-top: 40px;">
+            ❤️
+        </div>
+
+        <h1 class="glow" style="font-size: 2.8rem; margin-top: 10px;">
+            You deserve love, rest and happiness.
+        </h1>
+
+        <!-- Paragraph Set 1 -->
+        <div class="block-text fade-in-text">
+            <p>It's okay to feel tired.</p>
+            <p>It's okay to feel emotional.</p>
+            <p>I am with you.</p>
+            <p>Always.</p>
+        </div>
+
+        <!-- Paragraph Set 2 -->
+        <div class="block-text fade-in-text" style="animation-delay: 0.3s;">
+            <p>Breaks are okay.</p>
+            <p>Cravings are normal.</p>
+            <p>Mood swings matter.</p>
+            <p><strong>YOU MATTER.</strong></p>
+        </div>
+
+        <!-- Shayari Section -->
+        <div class="shayari fade-in-text" style="animation-delay: 0.6s; font-size: 1.4rem;">
+            Tum nazuk ho par kamzor nahi,<br>
+            Tum khoobsurat ho, bas sharmati ho,<br>
+            Agar duniya poochhe tum kaisi ho,<br>
+            Toh jawab sirf itna — tum meri ho. ❤️
+        </div>
+
+        <!-- Button -->
+        <button class="btn fade-in-text" style="animation-delay: 0.9s;" data-href="page3.html">
+            Next Surprise 💕
+        </button>
+
+        <!-- Music Player -->
+      
+
+    <!-- JS -->
+    <script src="script.js"></script>
+
+    <!-- HEART CURSOR TRAIL -->
+    <script>
+        document.addEventListener("mousemove", function(e) {
+            const heart = document.createElement("div");
+            heart.className = "cursor-heart";
+            heart.innerHTML = "💖";
+            heart.style.left = e.pageX + "px";
+            heart.style.top = e.pageY + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 900);
+        });
+
+        const cursorStyle = document.createElement("style");
+        cursorStyle.innerHTML = `
+        .cursor-heart {
+            position: absolute;
+            pointer-events: none;
+            font-size: 1.5rem;
+            animation: floatUp 0.9s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-30px) scale(1.5); opacity: 0; }
+        }
+        `;
+        document.head.appendChild(cursorStyle);
+    </script>
+
+</body>
+</html>

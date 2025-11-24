@@ -1,0 +1,91 @@
+/* GLOBAL STYLING */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    overflow: hidden;
+    color: white;
+    text-align: center;
+}
+
+/* Glow Title */
+.glow {
+    font-family: "Dancing Script", cursive;
+    font-size: 4rem;
+    margin-top: 60px;
+    text-shadow: 0 0 15px #ff8ccf, 0 0 30px #ff4fa8;
+    animation: glowPulse 3s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from { text-shadow: 0 0 10px #ff99cc; }
+    to   { text-shadow: 0 0 30px #ff4fa8, 0 0 60px #ff1e75; }
+}
+
+/* Shayari */
+.shayari {
+    font-size: 1.6rem;
+    margin: 20px auto;
+    width: 80%;
+    line-height: 1.7;
+}
+
+/* Button */
+.btn {
+    margin-top: 40px;
+    padding: 15px 40px;
+    background: linear-gradient(45deg, #ff1e75, #ff77b7);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff4fa8;
+    transition: 0.3s;
+    animation: heartbeat 1.4s infinite;
+}
+
+.btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 30px #ff99cc;
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+/* Sparkles Effect */
+.sparkles {
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.8) 2px, transparent 2px);
+    background-size: 40px 40px;
+    animation: sparkle 6s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes sparkle {
+    from { background-position: 0 0; }
+    to   { background-position: 400px 400px; }
+}
+
+/* Floating Hearts */
+.hearts::before {
+    content: "💖 💕 💗 💞 💘 💓";
+    font-size: 2rem;
+    position: absolute;
+    width: 100%;
+    animation: floatHearts 8s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes floatHearts {
+    from { transform: translateY(100vh); }
+    to   { transform: translateY(-100vh); }
+}

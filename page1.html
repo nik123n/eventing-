@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey Kanak ❤️</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- FIXED BACKGROUND IMAGE -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-image: url("heart1.jpg"); /* Replace with your heart1.jpg or gif */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .glow {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #ff6699;
+            text-shadow: 0 0 10px #ffb3c6, 0 0 20px #ff66aa, 0 0 30px #ff3388;
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            from { text-shadow: 0 0 10px #ffb3c6, 0 0 20px #ff66aa, 0 0 30px #ff3388; }
+            to { text-shadow: 0 0 20px #ffb3c6, 0 0 40px #ff66aa, 0 0 60px #ff3388; }
+        }
+
+        .intro-text {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        .shayari {
+            font-size: 1.3rem;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        /* Button */
+        .btn {
+            background: linear-gradient(45deg, #ff5ca7, #ffcce8);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 0 20px #ff99d6;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px #ff99d6, 0 0 60px #ff66aa;
+        }
+
+        /* Floating hearts */
+        .hearts span {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 5s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Sparkles */
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: sparkleAnim 1.5s linear infinite;
+        }
+
+        @keyframes sparkleAnim {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sparkles -->
+    <div class="sparkles"></div>
+
+    <!-- Floating Hearts -->
+    <div class="hearts"></div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1 class="glow">Hey Kanak ❤️</h1>
+        <p class="intro-text">I made something small but special… just for you.</p>
+        <div class="shayari">
+            Teri muskurahat meri aadat hai,<br>
+            Teri khushi mera farz hai,<br>
+            Aur tu… meri zindagi ka sabse khoobsurat hissa hai.
+        </div>
+        <button class="btn" id="nextBtn">Tap Here Princess 💗</button>
+    </div>
+
+    <!-- Music Player -->
+    
+    <!-- JS -->
+    <script>
+        // Floating Hearts
+        const heartsContainer = document.querySelector(".hearts");
+        setInterval(() => {
+            const heart = document.createElement("span");
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+            heartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }, 300);
+
+        // Sparkles
+        const sparklesContainer = document.querySelector(".sparkles");
+        setInterval(() => {
+            const sparkle = document.createElement("div");
+            sparkle.classList.add("sparkle");
+            sparkle.style.top = Math.random() * window.innerHeight + "px";
+            sparkle.style.left = Math.random() * window.innerWidth + "px";
+            sparkle.style.width = sparkle.style.height = Math.random() * 3 + 3 + "px";
+            sparklesContainer.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1500);
+        }, 200);
+
+        // Button animation + redirect
+        const nextBtn = document.getElementById("nextBtn");
+        nextBtn.addEventListener("click", () => {
+            nextBtn.style.transform = "scale(1.5)";
+            nextBtn.style.boxShadow = "0 0 50px #ffcce8, 0 0 100px #ff99d6";
+            nextBtn.style.transition = "transform 0.5s, box-shadow 0.5s";
+            setTimeout(() => {
+                window.location.href = "page2.html";
+            }, 600);
+        });
+    </script>
+
+</body>
+</html>
